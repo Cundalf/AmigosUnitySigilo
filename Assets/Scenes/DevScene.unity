@@ -616,6 +616,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6878252631933259963, guid: dbac650408b25744a90942506765b0af, type: 3}
   m_PrefabInstance: {fileID: 6878252632540329681}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &607200875 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6878252631933259962, guid: dbac650408b25744a90942506765b0af, type: 3}
+  m_PrefabInstance: {fileID: 6878252632540329681}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607200874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42df2c95315a2fd4bb2de5c7a252800e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &607200880 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6878252631933259937, guid: dbac650408b25744a90942506765b0af, type: 3}
+  m_PrefabInstance: {fileID: 6878252632540329681}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607200874}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 718ec64dcbbe96e47bc36d378a2f928f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &607200881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,6 +654,23 @@ MonoBehaviour:
   - {fileID: 1526741003}
   - {fileID: 2064428166}
   - {fileID: 2065932728}
+  distanceLimitToTarget: 0.5
+  waitAndSee: 0
+--- !u!114 &607200882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607200874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 005c1a931d8c800489ad461a6192a1c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPatrol: {fileID: 607200881}
+  enemyChasing: {fileID: 607200880}
+  fov: {fileID: 607200875}
 --- !u!1001 &814564720
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -801,14 +840,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 859214924}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.9995721, z: -0, w: -0.0292507}
   m_LocalPosition: {x: 0, y: 0.98, z: 2.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 532215234}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -183.352, z: 0}
 --- !u!54 &859214930
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1146,7 +1185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6878252631933259964, guid: dbac650408b25744a90942506765b0af, type: 3}
       propertyPath: m_StoppingDistance
-      value: 0
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6878252631933259965, guid: dbac650408b25744a90942506765b0af, type: 3}
       propertyPath: m_RootOrder

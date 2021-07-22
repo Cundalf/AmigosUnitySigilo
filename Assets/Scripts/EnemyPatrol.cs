@@ -8,6 +8,8 @@ public class EnemyPatrol : MonoBehaviour
     public Transform[] points;
     private int destPoint = 0;
     private NavMeshAgent agent;
+    public float distanceLimitToTarget  = 0.5f;
+    public bool waitAndSee = false;
 
 
     void Start()
@@ -19,7 +21,7 @@ public class EnemyPatrol : MonoBehaviour
         // approaches a destination point).
         agent.autoBraking = false;
 
-        //GotoNextPoint();
+        GotoNextPoint();
     }
 
 
@@ -31,7 +33,7 @@ public class EnemyPatrol : MonoBehaviour
 
         // Set the agent to go to the currently selected destination.
         agent.destination = points[destPoint].position;
-    
+
         Debug.Log($"destpoint{destPoint}");
         // Choose the next point in the array as the destination,
         // cycling to the start if necessary.
@@ -43,15 +45,22 @@ public class EnemyPatrol : MonoBehaviour
     {
 
         //Debug.Log($"Distance to point: {distance}");
+
+        
         var distance = Vector3.Distance(transform.position, agent.destination);
         Debug.Log($"distance is: {distance}");
 
-        if (!agent.pathPending && agent.remainingDistance < 0.5f)
-        {
-            
-            GotoNextPoint();
 
-        }
+
+            if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+            {
+
+
+                GotoNextPoint();
+
+            }
+     
+
        
 
         // Choose the next destination point when the agent gets
@@ -64,7 +73,10 @@ public class EnemyPatrol : MonoBehaviour
     public IEnumerator StayAtPosition()
 
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(5);
+        waitAndSee = false;
+        
+        
     }
 }
 
