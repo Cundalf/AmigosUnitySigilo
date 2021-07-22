@@ -46,7 +46,7 @@ public class CameraRotation : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Q)) StartCoroutine(Slerp(transform.rotation, Quaternion.Euler(0, transform.rotation.eulerAngles.y+ 90, 0)));
             if (Input.GetKeyDown(KeyCode.E)) StartCoroutine(Slerp(transform.rotation, Quaternion.Euler(0, transform.rotation.eulerAngles.y -90, 0)));
-            Debug.Log($"transform rotation : {transform.rotation}");
+           // Debug.Log($"transform rotation : {transform.rotation}");
     }
 
         private IEnumerator Slerp(Quaternion StartRot, Quaternion EndRot)
