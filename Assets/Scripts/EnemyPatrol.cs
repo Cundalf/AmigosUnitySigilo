@@ -9,7 +9,7 @@ public class EnemyPatrol : MonoBehaviour
     private int destPoint = 0;
     private NavMeshAgent agent;
     public float distanceLimitToTarget  = 0.5f;
-    public bool waitAndSee = false;
+    public bool waitAndSee = true;
 
 
     void Start()
@@ -19,7 +19,7 @@ public class EnemyPatrol : MonoBehaviour
         // Disabling auto-braking allows for continuous movement
         // between points (ie, the agent doesn't slow down as it
         // approaches a destination point).
-        agent.autoBraking = false;
+        agent.autoBraking = true;
 
         GotoNextPoint();
     }
@@ -27,38 +27,51 @@ public class EnemyPatrol : MonoBehaviour
 
     void GotoNextPoint()
     {
-        // Returns if no points have been set up
-        if (points.Length == 0)
-            return;
+
+            // Returns if no points have been set up
+            if (points.Length == 0)
+                return;
+            agent.destination = points[destPoint].position;
 
         // Set the agent to go to the currently selected destination.
-        agent.destination = points[destPoint].position;
 
-        Debug.Log($"destpoint{destPoint}");
-        // Choose the next point in the array as the destination,
-        // cycling to the start if necessary.
-        destPoint = (destPoint + 1) % points.Length;
+
+            
+             Debug.Log($"destpoint{destPoint}");
+            // Choose the next point in the array as the destination,
+            // cycling to the start if necessary.
+            destPoint = (destPoint + 1) % points.Length;
+
+
+        
+
+
     }
 
 
-    void Update()
+    void LateUpdate()
     {
 
         //Debug.Log($"Distance to point: {distance}");
 
-        
+        Debug.Log($"WaitAndSee state: {waitAndSee}");
         var distance = Vector3.Distance(transform.position, agent.destination);
+
         Debug.Log($"distance is: {distance}");
 
 
-
-            if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
-            {
-
+        
+        
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        {
 
                 GotoNextPoint();
+    
 
-            }
+        }
+                
+                
+    
      
 
        
@@ -73,9 +86,9 @@ public class EnemyPatrol : MonoBehaviour
     public IEnumerator StayAtPosition()
 
     {
-        yield return new WaitForSecondsRealtime(5);
-        waitAndSee = false;
+        yield return new WaitForSeconds(3);
         
+
         
     }
 }
