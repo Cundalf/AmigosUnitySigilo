@@ -7,7 +7,7 @@ public class pathChecker : MonoBehaviour
     public Transform playerLocation;
     public PlayerController playerControl;
 
-
+    // Este codigo reemplaza el antiguo walkChecker. Accede al playerMovement y si no hay nada "caminable" delante bloquea el avance SOLO en esa dirección.
     // Update is called once per frame
     void Update()
     {

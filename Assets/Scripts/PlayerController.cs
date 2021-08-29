@@ -36,12 +36,12 @@ public class PlayerController : MonoBehaviour
         translation *= Time.deltaTime;
         rotation *= Time.deltaTime;
 
-        // Move translation along the object's z-axis
+        // Se va a mover hacia delante sólo cuando el booleano se active. Y esta activación dependerá del pathChecker
         if (canMoveForward && translation > 0.0)
         {
             transform.Translate(0, 0, translation);
         }
-
+        // Se va a mover hacia delante sólo cuando el booleano se active. Y esta activación dependerá del pathChecker que detecta en la espalda del personaje.
         if (canMoveBackward && translation < 0.0)
         {
             transform.Translate(0, 0, translation);

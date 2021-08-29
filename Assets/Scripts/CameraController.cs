@@ -30,6 +30,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
+        //Comienza en la cámara más lejana y además setea el transform de la camara al centro del collider base del nivel.
         distantCamera = true;
         transform.position = colliderBaseLevel.bounds.center;
         rotationState = false;
@@ -55,26 +56,25 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C))
         {
+            // Un toggle sencillo del booleano que controla si estamos en la camara de lejos o de cerca
             distantCamera = !distantCamera;
         }
 
         if (distantCamera)
         {
+            /*Si pasamos a la camara lejana hacemos un lerp entre la posicion actual de la camara y el centro del collider base del nivel
+             * Ademas hacemos un LERP entre el tamaño que tenga el sensor ortografico de la camara y el tamaño que deberia tener 
+             * en la camara distante
+            */
             transform.position = Vector3.Lerp(transform.position, colliderBaseLevel.bounds.center, Time.deltaTime * cameraSmooth);
             mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, distantSize, Time.deltaTime * cameraSmooth);
 
             TP_ChangeState();
 
-            //transform.position = colliderBaseLevel.bounds.center;
-            //lastSeenPos = player.transform.position;
         }
 
         
 
-        //if (distantCamera && transform.rotation.eulerAngles.y == cameraYangle)
-        //{
-        //    
-        //}
 
         else
         {
@@ -84,6 +84,7 @@ public class CameraController : MonoBehaviour
         }
         Debug.Log("Camera toggle called");
 
+        // Dejo este codigo aca por si necesitamos hacer que la camara se mueve en puntos fijos cuando estamos en la camara cercana
 
         //if (Vector2.Distance(player.transform.position, transform.position) > 4.5)
         //{
@@ -130,11 +131,19 @@ public class CameraController : MonoBehaviour
 
     public void TP_ChangeState()
     {
+        /* Esta funcion calcula el angulo entre el eje y de la camara y el angulo para el eje y que seteamos como deseado para habilitar los teleport
+         * lo puse como distance porque los valores puntuales no son compatibles con el giro de camara ya que a veces varia en algún decimal y no se habilitan
+         * los teleport entonces es mejor setearlo como una condicion de "distancia menor a cierto limite" el limite esta hardcodeado pero puede ser otra variable
+         * mas del editor
+         * 
+         */
         distanceAngles = Mathf.Abs(cameraYangle - transform.rotation.eulerAngles.y);
         if (distantCamera && distanceAngles < 0.01f)
+
+            //Solo se habilita el tp en la camara distante y con la condicion de angulo de camara deseado
         {
 
-            foreach (GameObject tp in tps) //the line the error is pointing to
+            foreach (GameObject tp in tps) 
             {
                 tp.SetActive(true);
             }
@@ -142,7 +151,7 @@ public class CameraController : MonoBehaviour
 
         else
         {
-            foreach (GameObject tp in tps) //the line the error is pointing to
+            foreach (GameObject tp in tps) 
             {
                 tp.SetActive(false);
             }
