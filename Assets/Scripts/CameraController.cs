@@ -18,6 +18,8 @@ public class CameraController : MonoBehaviour
     public float cameraSmooth = 5;
     public float distantSize = 10f;
     public float closerSize = 2f;
+    private Vector3 lastSeenPos;
+    public float camOffset;
 
 
 
@@ -57,11 +59,14 @@ public class CameraController : MonoBehaviour
         if (distantCamera)
         {
             mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, distantSize, Time.deltaTime * cameraSmooth);
+            transform.position = colliderBaseLevel.bounds.center;
+            lastSeenPos = player.transform.position;
         }
 
         else
         {
             mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, closerSize, Time.deltaTime * cameraSmooth);
+            transform.position = colliderBaseLevel.bounds.center;
         }
         Debug.Log("Camera toggle called");
 
