@@ -5,7 +5,10 @@ using UnityEngine;
 public class TeleportPlayer : MonoBehaviour
 {
     public Transform teleportDestiny;
+    public TeleportPlayer destinyTP;
     public GameObject thePlayer;
+    public bool inState = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +23,12 @@ public class TeleportPlayer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && inState)
         {
+            destinyTP.inState = true;
+            inState = false;
             thePlayer.transform.position = teleportDestiny.transform.position;
+            
         }
     }
 }

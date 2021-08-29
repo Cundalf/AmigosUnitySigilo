@@ -812,7 +812,7 @@ GameObject:
   - component: {fileID: 85963309}
   m_Layer: 0
   m_Name: Escenario
-  m_TagString: Untagged
+  m_TagString: walkable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5906,6 +5906,7 @@ GameObject:
   - component: {fileID: 148414721}
   - component: {fileID: 148414720}
   - component: {fileID: 148414719}
+  - component: {fileID: 148414718}
   m_Layer: 0
   m_Name: Destiny
   m_TagString: Untagged
@@ -5913,6 +5914,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &148414718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148414717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14bafbd9292962f4c85808d70891f71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportDestiny: {fileID: 971820142}
+  destinyTP: {fileID: 971820138}
+  thePlayer: {fileID: 837658232}
+  inState: 0
 --- !u!65 &148414719
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5995,7 +6012,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20068
+  m_Name: pb_Mesh17072
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6820,7 +6837,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 810134730}
-  - component: {fileID: 810134731}
+  - component: {fileID: 810134732}
   m_Layer: 0
   m_Name: groundCheck
   m_TagString: Untagged
@@ -6836,13 +6853,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 810134729}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0017, y: 0, z: 0.0118}
+  m_LocalPosition: {x: 0.0017, y: 0, z: 0.0106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 837658233}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &810134731
+--- !u!114 &810134732
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6851,11 +6868,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 810134729}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e79e52bad855de44b8bc36df0b5534b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ea7572129b20344ea77a021c5b7497c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerLocation: {fileID: 837658233}
-  playerMovement: {fileID: 837658234}
+  walkChecker: {fileID: 837658237}
+  playerControl: {fileID: 837658234}
 --- !u!1 &837658232 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6061639385145046867, guid: 7d286c2be226440498b20e9044da48be, type: 3}
@@ -6880,7 +6898,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   rotationSpeed: 50
-  canMove: 1
+  canMoveForward: 0
+  canMoveBackward: 0
 --- !u!65 &837658235
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6910,6 +6929,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &837658237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837658232}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e79e52bad855de44b8bc36df0b5534b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 837658234}
+  frontCheckerState: 0
+  backCheckerState: 0
 --- !u!1 &965107541
 GameObject:
   m_ObjectHideFlags: 0
@@ -7005,7 +7039,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportDestiny: {fileID: 148414722}
+  destinyTP: {fileID: 148414718}
   thePlayer: {fileID: 837658232}
+  inState: 1
 --- !u!65 &971820139
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7082,6 +7118,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &980495223
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 980495224}
+  - component: {fileID: 980495225}
+  m_Layer: 0
+  m_Name: backGroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &980495224
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980495223}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0017, y: 0, z: -0.014}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 837658233}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &980495225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980495223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05167ad5da7caf44ba7d4d5366c4b8bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLocation: {fileID: 837658233}
+  walkChecker: {fileID: 837658237}
+  playerControl: {fileID: 837658234}
 --- !u!1 &1090773207
 GameObject:
   m_ObjectHideFlags: 0
