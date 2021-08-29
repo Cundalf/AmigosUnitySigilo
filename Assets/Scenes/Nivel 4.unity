@@ -7082,7 +7082,7 @@ MonoBehaviour:
   mainCamera: {fileID: 1963911590}
   distantCamera: 0
   cameraSmooth: 5
-  distantSize: 10
+  distantSize: 11
   closerSize: 3
   camOffset: 8
 --- !u!4 &965107544
