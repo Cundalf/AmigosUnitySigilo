@@ -10,15 +10,29 @@ public class CameraController : MonoBehaviour
     public float marginValue;
     public float maxAngle = 360;
     public float distance;
+    public GameObject player;
+    private Vector2 player_prev_position;
+    public Collider colliderBaseLevel;
+    public Camera mainCamera;
+    public bool distantCamera  =false;
+    public float cameraSmooth = 5;
+    public float distantSize = 10f;
+    public float closerSize = 2f;
+
+
+
 
 
 
 
     private void Start()
     {
+        distantCamera = true;
+        transform.position = colliderBaseLevel.bounds.center;
         rotationState = false;
         marginValue = 0.3f;
         targetValue = 1f;
+        
     }
 
     // Applies a rotation of 90 degrees per second around the Y axis
@@ -33,9 +47,32 @@ public class CameraController : MonoBehaviour
             targetValue = transform.eulerAngles.y + 90f;
         }
         RotateSelf();
-        Debug.Log($"transform euler angle y is: {transform.eulerAngles.y} and target value is : {targetValue}");
+        //Debug.Log($"transform euler angle y is: {transform.eulerAngles.y} and target value is : {targetValue}");
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            distantCamera = !distantCamera;
+        }
+
+        if (distantCamera)
+        {
+            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, distantSize, Time.deltaTime * cameraSmooth);
+        }
+
+        else
+        {
+            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, closerSize, Time.deltaTime * cameraSmooth);
+        }
+        Debug.Log("Camera toggle called");
 
 
+        //if (Vector2.Distance(player.transform.position, transform.position) > 4.5)
+        //{
+        //    Vector2 delta_position;
+        //    delta_position = (Vector2)player.transform.position - player_prev_position;
+        //    transform.Translate(delta_position);
+        //}
+        //player_prev_position = player.transform.position;
 
     }
 
@@ -71,4 +108,6 @@ public class CameraController : MonoBehaviour
         }
 
     }
+
+
 }
