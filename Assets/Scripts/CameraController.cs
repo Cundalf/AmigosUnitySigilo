@@ -20,8 +20,9 @@ public class CameraController : MonoBehaviour
     public float closerSize = 2f;
     private Vector3 lastSeenPos;
     public float camOffset;
-
-
+    public float cameraYangle = 0f;
+    public GameObject[] tps;
+    private float distanceAngles;
 
 
 
@@ -34,13 +35,14 @@ public class CameraController : MonoBehaviour
         rotationState = false;
         marginValue = 0.3f;
         targetValue = 1f;
+
         
     }
 
     // Applies a rotation of 90 degrees per second around the Y axis
     void Update()
     {
-
+        
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -60,15 +62,25 @@ public class CameraController : MonoBehaviour
         {
             transform.position = Vector3.Lerp(transform.position, colliderBaseLevel.bounds.center, Time.deltaTime * cameraSmooth);
             mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, distantSize, Time.deltaTime * cameraSmooth);
+
+            TP_ChangeState();
+
             //transform.position = colliderBaseLevel.bounds.center;
             //lastSeenPos = player.transform.position;
         }
+
+        
+
+        //if (distantCamera && transform.rotation.eulerAngles.y == cameraYangle)
+        //{
+        //    
+        //}
 
         else
         {
             transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * cameraSmooth) ;
             mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, closerSize, Time.deltaTime * cameraSmooth);
-            
+            TP_ChangeState();
         }
         Debug.Log("Camera toggle called");
 
@@ -114,6 +126,27 @@ public class CameraController : MonoBehaviour
             rotationState = false;
         }
 
+    }
+
+    public void TP_ChangeState()
+    {
+        distanceAngles = Mathf.Abs(cameraYangle - transform.rotation.eulerAngles.y);
+        if (distantCamera && distanceAngles < 0.01f)
+        {
+
+            foreach (GameObject tp in tps) //the line the error is pointing to
+            {
+                tp.SetActive(true);
+            }
+        }
+
+        else
+        {
+            foreach (GameObject tp in tps) //the line the error is pointing to
+            {
+                tp.SetActive(false);
+            }
+        }
     }
 
 

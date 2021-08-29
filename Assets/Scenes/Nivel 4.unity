@@ -5913,7 +5913,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &148414718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7085,6 +7085,10 @@ MonoBehaviour:
   distantSize: 11
   closerSize: 3
   camOffset: 8
+  cameraYangle: 0
+  tps:
+  - {fileID: 971820137}
+  - {fileID: 148414717}
 --- !u!4 &965107544
 Transform:
   m_ObjectHideFlags: 0
@@ -7119,7 +7123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &971820138
 MonoBehaviour:
   m_ObjectHideFlags: 0
