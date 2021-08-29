@@ -13,15 +13,15 @@ public class walkChecker : MonoBehaviour
         Ray ray = new Ray(transform.position, -transform.up);
         RaycastHit rayInfo;
 
-        if (Physics.Raycast(ray, out rayInfo, 100) && rayInfo.collider.CompareTag("unwalkable"))
+        if (Physics.Raycast(ray, out rayInfo, 100) && rayInfo.collider.CompareTag("walkable"))
         {
-            playerMovement.canMove = false;
-            Debug.DrawLine(ray.origin, rayInfo.point, Color.red);
+            playerMovement.canMove = true;
+            Debug.DrawLine(ray.origin, rayInfo.point, Color.green);
         }
         else
         {
-            playerMovement.canMove = true;
-            Debug.DrawLine(ray.origin, ray.direction * 100, Color.green);
+            playerMovement.canMove = false;
+            Debug.DrawLine(ray.origin, ray.direction * 100, Color.red);
         }
     }
 }
