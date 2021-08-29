@@ -5908,7 +5908,7 @@ GameObject:
   - component: {fileID: 148414719}
   - component: {fileID: 148414718}
   m_Layer: 0
-  m_Name: Destiny
+  m_Name: TP_Destiny
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6854,7 +6854,7 @@ Transform:
   m_GameObject: {fileID: 810134729}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0017, y: 0, z: 0.0106}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 837658233}
   m_RootOrder: 1
@@ -6872,7 +6872,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLocation: {fileID: 837658233}
-  walkChecker: {fileID: 837658237}
   playerControl: {fileID: 837658234}
 --- !u!1 &837658232 stripped
 GameObject:
@@ -6900,6 +6899,10 @@ MonoBehaviour:
   rotationSpeed: 50
   canMoveForward: 0
   canMoveBackward: 0
+  frontGroundCheck: {fileID: 810134730}
+  backGroundCheck: {fileID: 980495224}
+  frontGroundCheck_offset: 0.204
+  backFGroundCheck_offset: 0.204
 --- !u!65 &837658235
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6929,21 +6932,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &837658237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837658232}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e79e52bad855de44b8bc36df0b5534b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerMovement: {fileID: 837658234}
-  frontCheckerState: 0
-  backCheckerState: 0
 --- !u!1 &965107541
 GameObject:
   m_ObjectHideFlags: 0
@@ -7020,7 +7008,7 @@ GameObject:
   - component: {fileID: 971820139}
   - component: {fileID: 971820138}
   m_Layer: 0
-  m_Name: TP_PB
+  m_Name: TP_Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7162,7 +7150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLocation: {fileID: 837658233}
-  walkChecker: {fileID: 837658237}
   playerControl: {fileID: 837658234}
 --- !u!1 &1090773207
 GameObject:

@@ -8,6 +8,18 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 100.0f;
     public bool canMoveForward;
     public bool canMoveBackward;
+    public Transform frontGroundCheck;
+    public Transform backGroundCheck;
+    [Range(0,0.5f)]
+    public float frontGroundCheck_offset = 1f;
+    [Range(0, 0.5f)]
+    public float backFGroundCheck_offset= 1f;
+
+    private void Start()
+    {
+        frontGroundCheck.position = transform.position + new Vector3(0, 0, frontGroundCheck_offset);
+        backGroundCheck.position = transform.position - new Vector3(0, 0, backFGroundCheck_offset);
+    }
 
     void Update()
     {

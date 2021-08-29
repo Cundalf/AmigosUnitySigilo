@@ -5,7 +5,6 @@ using UnityEngine;
 public class pathChecker : MonoBehaviour
 {
     public Transform playerLocation;
-    public walkChecker walkChecker;
     public PlayerController playerControl;
 
 

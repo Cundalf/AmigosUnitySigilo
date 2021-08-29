@@ -25,10 +25,18 @@ public class TeleportPlayer : MonoBehaviour
     {
         if (other.CompareTag("Player") && inState)
         {
-            destinyTP.inState = true;
+            
+
             inState = false;
             thePlayer.transform.position = teleportDestiny.transform.position;
-            
+            StartCoroutine(PortalActivationDelay());
         }
+    }
+
+    IEnumerator PortalActivationDelay()  //  <-  its a standalone method
+    {
+       
+        yield return new WaitForSeconds(3);
+        destinyTP.inState = true;
     }
 }
