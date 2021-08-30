@@ -82,7 +82,7 @@ public class CameraController : MonoBehaviour
             mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, closerSize, Time.deltaTime * cameraSmooth);
             TP_ChangeState();
         }
-        Debug.Log("Camera toggle called");
+       // Debug.Log("Camera toggle called");
 
         // Dejo este codigo aca por si necesitamos hacer que la camara se mueve en puntos fijos cuando estamos en la camara cercana
 
