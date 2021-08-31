@@ -6,10 +6,12 @@ public class EnemyPatrol : MonoBehaviour
 {
 
     public Transform[] points;
-    private int destPoint = 0;
+    public int destPoint = 0;
     private NavMeshAgent agent;
     public float distanceLimitToTarget  = 0.5f;
     public bool waitAndSee = true;
+    public float distance;
+    public EnemyStateManager currentState;
 
 
     void Start()
@@ -25,26 +27,24 @@ public class EnemyPatrol : MonoBehaviour
     }
 
 
-    void GotoNextPoint()
+    public void GotoNextPoint()
     {
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        {
 
-            // Returns if no points have been set up
-            if (points.Length == 0)
+                // Returns if no points have been set up
+                if (points.Length == 0)
                 return;
-            agent.destination = points[destPoint].position;
+                
+                agent.destination = points[destPoint].position;
+                // Set the agent to go to the currently selected destination.
 
-        // Set the agent to go to the currently selected destination.
-
-
-            
-             Debug.Log($"destpoint{destPoint}");
-            // Choose the next point in the array as the destination,
-            // cycling to the start if necessary.
-            destPoint = (destPoint + 1) % points.Length;
-
-
-        
-
+                Debug.Log($"destpoint{destPoint}");
+                // Choose the next point in the array as the destination,
+                // cycling to the start if necessary.
+                destPoint = (destPoint + 1) % points.Length;
+                Debug.Log("Still Here");      
+        }
 
     }
 
@@ -54,28 +54,17 @@ public class EnemyPatrol : MonoBehaviour
 
         //Debug.Log($"Distance to point: {distance}");
 
-        Debug.Log($"WaitAndSee state: {waitAndSee}");
-        var distance = Vector3.Distance(transform.position, agent.destination);
-
+        //Debug.Log($"WaitAndSee state: {waitAndSee}");
+        distance = Vector3.Distance(transform.position, agent.destination);
         Debug.Log($"distance is: {distance}");
 
+        //if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        //{
 
-        
-        
-        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
-        {
+        //        //GotoNextPoint();
 
-                GotoNextPoint();
-    
-
-        }
-                
-                
-    
-     
-
-       
-
+        //}
+      
         // Choose the next destination point when the agent gets
         // close to the current one.
 
@@ -89,7 +78,7 @@ public class EnemyPatrol : MonoBehaviour
         yield return new WaitForSeconds(3);
         
 
-        
+
     }
 }
 

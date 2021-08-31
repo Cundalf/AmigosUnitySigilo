@@ -17,23 +17,23 @@ public class CameraRotatioTracker : MonoBehaviour
     {
         yAngleVal = rotationState.rotation.eulerAngles.y;
       
-        RotationState();
+       // RotationState();
     }
 
-    public void  RotationState()
-    {
+    //public void  RotationState()
+    //{
         
-        if (Mathf.Round(yAngleVal) == 0)
+    //    if (Mathf.Round(yAngleVal) == 0)
 
-            Debug.Log("Estoy en rotacion 0");
+    //        Debug.Log("Estoy en rotacion 0");
             
-        else if (Mathf.Round(yAngleVal) == 90)
-            Debug.Log("Estoy en rotacion 90");
-        else if (Mathf.Round(yAngleVal) == 180)
-            Debug.Log("Estoy en rotacion 180");
-        else if (Mathf.Round(yAngleVal) == 270)
-            Debug.Log("Estoy en rotacion 270");
+    //    else if (Mathf.Round(yAngleVal) == 90)
+    //        Debug.Log("Estoy en rotacion 90");
+    //    else if (Mathf.Round(yAngleVal) == 180)
+    //        Debug.Log("Estoy en rotacion 180");
+    //    else if (Mathf.Round(yAngleVal) == 270)
+    //        Debug.Log("Estoy en rotacion 270");
         
-    }
+    //}
 }
 
