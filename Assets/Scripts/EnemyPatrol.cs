@@ -48,6 +48,7 @@ public class EnemyPatrol : MonoBehaviour
                 
 
                  // Set the agent to go to the currently selected destination.
+
                 agent.destination = points[destPoint].position;
                 destPoint = (destPoint + 1) % points.Length;
                 //Debug.Log($"destpoint{destPoint}");
@@ -57,7 +58,8 @@ public class EnemyPatrol : MonoBehaviour
                 // Debug.Log("Still Here");      
                 if (agent.remainingDistance < 2f)
                 {
-                llegandoAPunto = true;
+                    llegandoAPunto = true;
+
                 }
         }
 
