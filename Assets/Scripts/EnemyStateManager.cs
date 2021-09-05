@@ -34,9 +34,19 @@ public class EnemyStateManager : MonoBehaviour
             case EnemyState.Walking:
 
                 //enemyPatrol.enabled = true;
-            
-                enemyPatrol.GotoNextPoint();
-                currentEnemyState = EnemyState.Patrolling;
+                
+                if(enemyPatrol.llegandoAPunto)
+                {
+                    currentEnemyState = EnemyState.Patrolling;
+                    enemyPatrol.llegandoAPunto = !enemyPatrol.llegandoAPunto;
+                }
+                
+                else
+                {
+                    
+                    enemyPatrol.GotoNextPoint();
+                }
+                
                 
                 
               
@@ -49,14 +59,15 @@ public class EnemyStateManager : MonoBehaviour
                 break;
             case EnemyState.Patrolling:
 
-                    Debug.Log("fuera del if");
+                    //Debug.Log("fuera del if");
                     StartCoroutine(WaitingAndWatching());
-                    Debug.Log("esperando");
                     
-                
+                    //Debug.Log("esperando");
 
-                    
-                
+
+
+
+
 
                 break;
             case EnemyState.Chasing:
@@ -64,7 +75,7 @@ public class EnemyStateManager : MonoBehaviour
                 if(!fov.canSeePlayer)
                 {
                     enemyChasing.enabled = false;
-                    currentEnemyState = EnemyState.Walking;
+                    //currentEnemyState = EnemyState.Walking;
                 }
                 break;
 
@@ -75,8 +86,9 @@ public class EnemyStateManager : MonoBehaviour
     {
         //enemyPatrol.enabled = false;
         yield return new WaitForSeconds(enemyWaitingAtPosition);
-       
         currentEnemyState = EnemyState.Walking;
+
+
     }
     //// Update is called once per frame
     //void Update()
