@@ -13,7 +13,7 @@ public class EnemyStateManager : MonoBehaviour
     public float enemyWaitingAtPosition = 1f;
     private NavMeshAgent agent;
     public bool esperando;
-    public Vector3 destinoActual;
+    public Vector3 destinoAnterior;
 
 
     public enum EnemyState
@@ -41,9 +41,9 @@ public class EnemyStateManager : MonoBehaviour
 
                 //enemyPatrol.enabled = true;
                 
-                if(agent.remainingDistance < 2f && !esperando)
+                if(agent.remainingDistance < 2f && !esperando && agent.destination != destinoAnterior)
                 {
-                    
+                    destinoAnterior = agent.destination;
                     //enemyPatrol.llegandoAPunto = false;
                     esperando = true;
                     currentEnemyState = EnemyState.Patrolling;
@@ -95,8 +95,10 @@ public class EnemyStateManager : MonoBehaviour
     public IEnumerator WaitingAndWatching()
     {
         //enemyPatrol.enabled = false;
-        
+        var tiempoInicio = Time.time;
         yield return new WaitForSeconds(enemyWaitingAtPosition);
+        var tiempoFin = Time.time - tiempoInicio;
+        Debug.Log($"Tiempo transcurrido esperando {tiempoFin}");
         esperando = false;
         currentEnemyState = EnemyState.Walking;
         Debug.Log("Esperando");
