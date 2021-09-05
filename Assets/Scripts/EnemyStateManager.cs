@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyStateManager : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class EnemyStateManager : MonoBehaviour
     public EnemyController enemyChasing;
     public FieldOfView fov;
     public float enemyWaitingAtPosition = 1f;
+    private NavMeshAgent agent;
+    public bool esperando;
+    public Vector3 destinoActual;
+
 
     public enum EnemyState
     {
@@ -23,6 +28,7 @@ public class EnemyStateManager : MonoBehaviour
     void Start()
     {
         currentEnemyState = EnemyState.Walking;
+        agent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
@@ -35,9 +41,11 @@ public class EnemyStateManager : MonoBehaviour
 
                 //enemyPatrol.enabled = true;
                 
-                if(enemyPatrol.llegandoAPunto)
+                if(agent.remainingDistance < 2f && !esperando)
                 {
-                    enemyPatrol.llegandoAPunto = false;
+                    
+                    //enemyPatrol.llegandoAPunto = false;
+                    esperando = true;
                     currentEnemyState = EnemyState.Patrolling;
                     
                 }
@@ -46,11 +54,9 @@ public class EnemyStateManager : MonoBehaviour
                 {
                     
                     enemyPatrol.GotoNextPoint();
+
                    
                 }
-                
-                
-                
               
 
                 if (fov.canSeePlayer)
@@ -59,6 +65,8 @@ public class EnemyStateManager : MonoBehaviour
                     currentEnemyState = EnemyState.Chasing;
                 }
                 break;
+
+
              case EnemyState.Patrolling:
 
                     //Debug.Log("fuera del if");
@@ -87,10 +95,25 @@ public class EnemyStateManager : MonoBehaviour
     public IEnumerator WaitingAndWatching()
     {
         //enemyPatrol.enabled = false;
+        
         yield return new WaitForSeconds(enemyWaitingAtPosition);
+        esperando = false;
         currentEnemyState = EnemyState.Walking;
+        Debug.Log("Esperando");
         
 
+    }
+
+    public IEnumerator GivingTimeToMove()
+    {
+        yield return new WaitForSeconds(3f);
+        esperando = true;
+    }
+
+    public IEnumerator GivingTimeToMoveB()
+    {
+        yield return new WaitForSeconds(1f);
+        
     }
     //// Update is called once per frame
     //void Update()

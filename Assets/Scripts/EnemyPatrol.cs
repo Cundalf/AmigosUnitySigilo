@@ -37,7 +37,7 @@ public class EnemyPatrol : MonoBehaviour
 
 
         //Debug.Log($"distancia que le queda al agente{agent.pathPending}");
-        Debug.Log($"LLEGANDO AL PUNTO STATE: {llegandoAPunto}");
+        //Debug.Log($"LLEGANDO AL PUNTO STATE: {llegandoAPunto}");
 
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
@@ -56,11 +56,7 @@ public class EnemyPatrol : MonoBehaviour
                 // cycling to the start if necessary.
 
                 // Debug.Log("Still Here");      
-                if (agent.remainingDistance < 2f)
-                {
-                    llegandoAPunto = true;
 
-                }
         }
 
     }
