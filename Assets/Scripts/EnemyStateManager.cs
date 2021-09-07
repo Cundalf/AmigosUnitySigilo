@@ -14,6 +14,7 @@ public class EnemyStateManager : MonoBehaviour
     private NavMeshAgent agent;
     public bool esperando;
     public Vector3 destinoAnterior;
+    public int destinoAnteriorB;
 
 
     public enum EnemyState
@@ -40,13 +41,18 @@ public class EnemyStateManager : MonoBehaviour
             case EnemyState.Walking:
 
                 //enemyPatrol.enabled = true;
-               
-                Debug.Log($"El destino del agente fuera del if es: {enemyPatrol.destPoint}");
-                if(agent.remainingDistance < 2f && !esperando && agent.destination != destinoAnterior)
+
+                //Debug.Log($"El destino del agente fuera del if es: {enemyPatrol.destPoint}");
+
+                //agent.remainingDistance < 2f && !esperando && enemyPatrol.destPoint != destinoAnteriorB
+
+                if (!enemyPatrol.NeedDestination() && agent.remainingDistance < 2f && !esperando)
                 {
-                    Debug.Log($"El destino del agente DENTRO del if es: {enemyPatrol.destPoint}");
-                    destinoAnterior = agent.destination;
-                    //enemyPatrol.llegandoAPunto = false;
+                    if (enemyPatrol.GetDestPoint() == destinoAnteriorB)
+                    
+                        return;
+                  
+                    destinoAnteriorB = enemyPatrol.destPoint;
                     esperando = true;
                     currentEnemyState = EnemyState.Patrolling;
                     
@@ -56,8 +62,7 @@ public class EnemyStateManager : MonoBehaviour
                 {
                     
                     enemyPatrol.GotoNextPoint();
-
-                   
+                    
                 }
               
 
@@ -69,12 +74,14 @@ public class EnemyStateManager : MonoBehaviour
                 break;
 
 
+
+
              case EnemyState.Patrolling:
 
-                    //Debug.Log("fuera del if");
+                 
                     StartCoroutine(WaitingAndWatching());
                     
-                    //Debug.Log("esperando");
+                
 
 
 
@@ -102,6 +109,7 @@ public class EnemyStateManager : MonoBehaviour
         var tiempoFin = Time.time - tiempoInicio;
         //Debug.Log($"Tiempo transcurrido esperando {tiempoFin}");
         esperando = false;
+        enemyPatrol.outsideBool = true;
         currentEnemyState = EnemyState.Walking;
         //Debug.Log("Esperando");
         

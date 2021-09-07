@@ -13,7 +13,10 @@ public class EnemyPatrol : MonoBehaviour
     public float distance;
     public EnemyStateManager currentState;
     public bool llegandoAPunto = false;
-
+    private int destinoAnterior;
+    private int destinoSiguiente;
+    private int destinoActual;
+    public bool outsideBool;
 
     void Start()
     {
@@ -23,8 +26,8 @@ public class EnemyPatrol : MonoBehaviour
         // between points (ie, the agent doesn't slow down as it
         // approaches a destination point).
         agent.autoBraking = true;
-
-        GotoNextPoint();
+        destinoActual = -1;
+        //GotoNextPoint();
     }
 
     private void Update()
@@ -36,29 +39,51 @@ public class EnemyPatrol : MonoBehaviour
     {
 
 
-        //Debug.Log($"distancia que le queda al agente{agent.pathPending}");
-        //Debug.Log($"LLEGANDO AL PUNTO STATE: {llegandoAPunto}");
+        //!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance
 
-        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        if (NeedDestination())
         {
 
-                // Returns if no points have been set up
                 if (points.Length == 0)
                 return;
-                
 
-                 // Set the agent to go to the currently selected destination.
+            
+            agent.destination = points[GetDestPoint()].position;
+            outsideBool = false;
 
-                agent.destination = points[destPoint].position;
-                destPoint = (destPoint + 1) % points.Length;
-                //Debug.Log($"destpoint{destPoint}");
-                // Choose the next point in the array as the destination,
-                // cycling to the start if necessary.
 
-                // Debug.Log("Still Here");      
 
         }
 
+
+
+
+    }
+
+    public bool NeedDestination()
+    {
+        
+        if (agent.destination == Vector3.zero)
+        {
+            return true;
+        }
+
+        var distance = Vector3.Distance(transform.position, agent.destination);
+        if (distance <= agent.stoppingDistance)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public int GetDestPoint()
+    {
+        
+        destPoint = (destPoint + 1) % points.Length;
+        destinoActual = destPoint;
+
+        return destPoint ;
     }
 
 
