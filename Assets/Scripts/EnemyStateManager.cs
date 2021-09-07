@@ -40,9 +40,11 @@ public class EnemyStateManager : MonoBehaviour
             case EnemyState.Walking:
 
                 //enemyPatrol.enabled = true;
-                
+               
+                Debug.Log($"El destino del agente fuera del if es: {enemyPatrol.destPoint}");
                 if(agent.remainingDistance < 2f && !esperando && agent.destination != destinoAnterior)
                 {
+                    Debug.Log($"El destino del agente DENTRO del if es: {enemyPatrol.destPoint}");
                     destinoAnterior = agent.destination;
                     //enemyPatrol.llegandoAPunto = false;
                     esperando = true;
@@ -98,10 +100,10 @@ public class EnemyStateManager : MonoBehaviour
         var tiempoInicio = Time.time;
         yield return new WaitForSeconds(enemyWaitingAtPosition);
         var tiempoFin = Time.time - tiempoInicio;
-        Debug.Log($"Tiempo transcurrido esperando {tiempoFin}");
+        //Debug.Log($"Tiempo transcurrido esperando {tiempoFin}");
         esperando = false;
         currentEnemyState = EnemyState.Walking;
-        Debug.Log("Esperando");
+        //Debug.Log("Esperando");
         
 
     }
