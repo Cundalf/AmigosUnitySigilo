@@ -25,4 +25,6 @@ public class backPathChecker : MonoBehaviour
             Debug.DrawLine(ray.origin, ray.direction * 100, Color.red);
         }
     }
+
+
 }
