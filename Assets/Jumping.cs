@@ -6,8 +6,9 @@ public class Jumping : MonoBehaviour
 {
     public PlayerController playerControl;
     public Rigidbody playerRB;
-    public Transform targetSalto;
-    
+    private Transform targetSalto;
+    public float factor = 0.7f;
+    public bool isGrounded;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,15 +18,18 @@ public class Jumping : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        Debug.Log($"Target salto value: {targetSalto}");
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && targetSalto != null)
         {
           
-
             var VectorDireccion = new Vector3 (targetSalto.position.x, targetSalto.position.y + 10f, targetSalto.position.z) - transform.position;
-            var VectorFuerza = calcBallisticVelocityVector(transform.position, targetSalto.position, 80);
-            Debug.Log($"Vector : {VectorDireccion}");
+            var VectorFuerza = calcBallisticVelocityVector(transform.position, targetSalto.position, 85);
             playerRB.AddForce(VectorFuerza, ForceMode.Impulse);
+           
+           
         }
+
+
 
     }
 
@@ -43,7 +47,7 @@ public class Jumping : MonoBehaviour
 
         // calculate velocity
         float velocity = Mathf.Sqrt(distance * Physics.gravity.magnitude / Mathf.Sin(2 * a));
-        return velocity*direction.normalized;
+        return velocity*direction.normalized * factor;
     }
 
     private void OnTriggerStay(Collider other)
@@ -51,11 +55,22 @@ public class Jumping : MonoBehaviour
         if (other.CompareTag("jumpeable"))
         {
 
+            targetSalto = other.GetComponentInChildren<SaltoTarget>().transform;
             
-           
-            //playerRB.AddForce(calcBallisticVelocityVector(transform.position, objetivosalto.position, 90));
- 
-            
+        }
+
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("walkable"))
+        {
+            isGrounded = true;
+        }
+
+        else
+        {
+            isGrounded = false;
         }
     }
 }

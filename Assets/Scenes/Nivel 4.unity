@@ -7134,6 +7134,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerControl: {fileID: 837658234}
   playerRB: {fileID: 837658236}
+  factor: 0.85
+  isGrounded: 0
 --- !u!1 &898257869
 GameObject:
   m_ObjectHideFlags: 0
@@ -10559,7 +10561,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19912
+  m_Name: pb_Mesh17002
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11187,6 +11189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1881745036}
+  - component: {fileID: 1881745037}
   m_Layer: 0
   m_Name: ObjetivoSalto
   m_TagString: jumpeable
@@ -11208,6 +11211,19 @@ Transform:
   m_Father: {fileID: 73980613}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1881745037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881745035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 489ef84632c59a04d816573d962502c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dianaPos: {fileID: 1881745036}
 --- !u!1 &1963911588
 GameObject:
   m_ObjectHideFlags: 0
