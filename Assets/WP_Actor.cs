@@ -8,6 +8,7 @@ public class WP_Actor : MonoBehaviour
     public float speed = 5.0f;
     public Transform target;
     private NavMeshAgent agent;
+    public float timeWaitingOnWayPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +36,7 @@ public class WP_Actor : MonoBehaviour
 
     IEnumerator WaitingAtPosition()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(timeWaitingOnWayPoint);
         agent.SetDestination(target.position);
     }
 }

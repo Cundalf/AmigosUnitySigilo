@@ -455,7 +455,7 @@ Transform:
   m_GameObject: {fileID: 63772136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.04, y: 2, z: -6.91}
-  m_LocalScale: {x: 1.37, y: 2.34, z: 1}
+  m_LocalScale: {x: 1.37, y: 3.09, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -6448,7 +6448,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16978
+  m_Name: pb_Mesh16998
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6747,7 +6747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6869278382541385193, guid: 7d286c2be226440498b20e9044da48be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.67
+      value: 4.21
       objectReference: {fileID: 0}
     - target: {fileID: 6869278382541385193, guid: 7d286c2be226440498b20e9044da48be, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6755,7 +6755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6869278382541385193, guid: 7d286c2be226440498b20e9044da48be, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.63
+      value: -7.48
       objectReference: {fileID: 0}
     - target: {fileID: 6869278382541385193, guid: 7d286c2be226440498b20e9044da48be, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10065,7 +10065,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8606ef0157486184892321eec1948f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyManager: {fileID: 1192494506}
 --- !u!850595691 &1128204755
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -10365,6 +10364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   target: {fileID: 1716012432}
+  timeWaitingOnWayPoint: 2
 --- !u!114 &1192494517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10554,7 +10554,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8606ef0157486184892321eec1948f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyManager: {fileID: 1192494506}
 --- !u!43 &1706370429
 Mesh:
   m_ObjectHideFlags: 0
@@ -11179,7 +11178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8606ef0157486184892321eec1948f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyManager: {fileID: 1192494506}
 --- !u!1 &1881745035
 GameObject:
   m_ObjectHideFlags: 0
