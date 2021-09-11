@@ -6,6 +6,9 @@ TagManager:
   tags:
   - unwalkable
   - walkable
+  - waypoint
+  - objetivosalto
+  - jumpeable
   layers:
   - Default
   - TransparentFX
