@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerController : MonoBehaviour
 {
+    //Translation and rotacion
     public float speed = 10.0f;
     public float rotationSpeed = 100.0f;
     public bool canMoveForward;
@@ -23,6 +26,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Movement();
+    }
+
+    private void Movement()
+    {
         // Get the horizontal and vertical axis.
         // By default they are mapped to the arrow keys.
         // The value is in the range -1 to 1
@@ -36,12 +44,12 @@ public class PlayerController : MonoBehaviour
         translation *= Time.deltaTime;
         rotation *= Time.deltaTime;
 
-        // Se va a mover hacia delante sólo cuando el booleano se active. Y esta activación dependerá del pathChecker
+        // Se va a mover hacia delante sï¿½lo cuando el booleano se active. Y esta activaciï¿½n dependerï¿½ del pathChecker
         if (canMoveForward && translation > 0.0)
         {
             transform.Translate(0, 0, translation);
         }
-        // Se va a mover hacia delante sólo cuando el booleano se active. Y esta activación dependerá del pathChecker que detecta en la espalda del personaje.
+        // Se va a mover hacia delante sï¿½lo cuando el booleano se active. Y esta activaciï¿½n dependerï¿½ del pathChecker que detecta en la espalda del personaje.
         if (canMoveBackward && translation < 0.0)
         {
             transform.Translate(0, 0, translation);
@@ -49,5 +57,21 @@ public class PlayerController : MonoBehaviour
 
         // Rotate around our y-axis
         transform.Rotate(0, rotation, 0);
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
+        }
     }
+
+    void OnCollisionStay()
+    {
+        isGrounded = true;
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        isGrounded = false;
+    }
+
 }
