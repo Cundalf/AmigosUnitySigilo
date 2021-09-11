@@ -6,11 +6,17 @@ public class EnemyPatrol : MonoBehaviour
 {
 
     public Transform[] points;
-    private int destPoint = 0;
+    public int destPoint = 0;
     private NavMeshAgent agent;
     public float distanceLimitToTarget  = 0.5f;
-    public bool waitAndSee = false;
-
+    public bool waitAndSee = true;
+    public float distance;
+    public EnemyStateManager currentState;
+    public bool llegandoAPunto = false;
+    private int destinoAnterior;
+    private int destinoSiguiente;
+    private int destinoActual;
+    public bool outsideBool;
 
     void Start()
     {
@@ -19,64 +25,101 @@ public class EnemyPatrol : MonoBehaviour
         // Disabling auto-braking allows for continuous movement
         // between points (ie, the agent doesn't slow down as it
         // approaches a destination point).
-        agent.autoBraking = false;
-
-        GotoNextPoint();
+        agent.autoBraking = true;
+        destinoActual = -1;
+        //GotoNextPoint();
     }
 
-
-    void GotoNextPoint()
+    private void Update()
     {
-        // Returns if no points have been set up
-        if (points.Length == 0)
-            return;
 
-        // Set the agent to go to the currently selected destination.
-        agent.destination = points[destPoint].position;
+    }
 
-        Debug.Log($"destpoint{destPoint}");
-        // Choose the next point in the array as the destination,
-        // cycling to the start if necessary.
+    public void GotoNextPoint()
+    {
+
+
+        //!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance
+
+        if (NeedDestination())
+        {
+
+                if (points.Length == 0)
+                return;
+
+            
+            agent.destination = points[GetDestPoint()].position;
+            outsideBool = false;
+
+
+
+        }
+
+
+
+
+    }
+
+    public bool NeedDestination()
+    {
+        
+        if (agent.destination == Vector3.zero)
+        {
+            return true;
+        }
+
+        var distance = Vector3.Distance(transform.position, agent.destination);
+        if (distance <= agent.stoppingDistance)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public int GetDestPoint()
+    {
+        
         destPoint = (destPoint + 1) % points.Length;
+        destinoActual = destPoint;
+
+        return destPoint ;
     }
 
 
-    void Update()
+    void LateUpdate()
     {
+        distance = Vector3.Distance(transform.position, agent.destination);
+       
+
 
         //Debug.Log($"Distance to point: {distance}");
 
-        
-        var distance = Vector3.Distance(transform.position, agent.destination);
-        Debug.Log($"distance is: {distance}");
+        //Debug.Log($"WaitAndSee state: {waitAndSee}");
 
+        //Debug.Log($"distance is: {distance}");
 
+        //if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        //{
 
-            if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
-            {
+        //        //GotoNextPoint();
 
-
-                GotoNextPoint();
-
-            }
-     
-
-       
+        //}
 
         // Choose the next destination point when the agent gets
         // close to the current one.
 
-            
+
     }
 
 
     public IEnumerator StayAtPosition()
 
     {
-        yield return new WaitForSecondsRealtime(5);
-        waitAndSee = false;
+        yield return new WaitForSeconds(3);
         
-        
+
+
     }
 }
 
