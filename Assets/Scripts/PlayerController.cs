@@ -9,17 +9,19 @@ public class PlayerController : MonoBehaviour
     //Translation and rotacion
     public float speed = 10.0f;
     public float rotationSpeed = 100.0f;
-    Rigidbody rb;
-    private Vector3 jump;
-
-    //Jump
-    public bool isGrounded;
-    public  float jumpForce = 2.0f;
+    public bool canMoveForward;
+    public bool canMoveBackward;
+    public Transform frontGroundCheck;
+    public Transform backGroundCheck;
+    [Range(0,0.5f)]
+    public float frontGroundCheck_offset = 1f;
+    [Range(0, 0.5f)]
+    public float backFGroundCheck_offset= 1f;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        jump = new Vector3(0.0f,2.0f,0.0f);
+        frontGroundCheck.position = transform.position + new Vector3(0, 0, frontGroundCheck_offset);
+        backGroundCheck.position = transform.position - new Vector3(0, 0, backFGroundCheck_offset);
     }
 
     void Update()
@@ -35,12 +37,23 @@ public class PlayerController : MonoBehaviour
         float translation = Input.GetAxis("Vertical") * speed;
         float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
 
+
         // Make it move 10 meters per second instead of 10 meters per frame...
+
+
         translation *= Time.deltaTime;
         rotation *= Time.deltaTime;
 
-        // Move translation along the object's z-axis
-        transform.Translate(0, 0, translation);
+        // Se va a mover hacia delante s�lo cuando el booleano se active. Y esta activaci�n depender� del pathChecker
+        if (canMoveForward && translation > 0.0)
+        {
+            transform.Translate(0, 0, translation);
+        }
+        // Se va a mover hacia delante s�lo cuando el booleano se active. Y esta activaci�n depender� del pathChecker que detecta en la espalda del personaje.
+        if (canMoveBackward && translation < 0.0)
+        {
+            transform.Translate(0, 0, translation);
+        }
 
         // Rotate around our y-axis
         transform.Rotate(0, rotation, 0);
