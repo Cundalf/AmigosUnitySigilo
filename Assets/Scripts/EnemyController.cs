@@ -25,6 +25,7 @@ public class EnemyController : MonoBehaviour
         if (fov.canSeePlayer)
         {
             agent.SetDestination(target.position);
+            agent.stoppingDistance = 2f;
            // Debug.Log("True condition chase should start");
         }
 
