@@ -14,7 +14,7 @@ public class backPathChecker : MonoBehaviour
         Ray ray = new Ray(transform.position, -transform.up);
         RaycastHit rayInfo;
 
-        if (Physics.Raycast(ray, out rayInfo, 100) && (rayInfo.collider.CompareTag("walkable") || rayInfo.collider.CompareTag("jumpeable")))
+        if (Physics.Raycast(ray, out rayInfo, 100) && (rayInfo.collider.CompareTag("walkable") || rayInfo.collider.CompareTag("jumpeable")|| rayInfo.collider.CompareTag("Ladder")))
         {
             playerControl.canMoveBackward = true;
             Debug.DrawLine(ray.origin, rayInfo.point, Color.green);

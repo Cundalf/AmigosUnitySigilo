@@ -4,13 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Floor
-  - Ladder
   - unwalkable
   - walkable
   - waypoint
   - objetivosalto
   - jumpeable
+  - Ladder
   layers:
   - Default
   - TransparentFX
