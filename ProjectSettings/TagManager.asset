@@ -9,6 +9,7 @@ TagManager:
   - waypoint
   - objetivosalto
   - jumpeable
+  - Ladder
   layers:
   - Default
   - TransparentFX
