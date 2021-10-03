@@ -500,7 +500,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0.000061035156, y: 0}
-  m_SizeDelta: {x: 577.391, y: 142.744}
+  m_SizeDelta: {x: 1551.252, y: 542.361}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1848461745
 MonoBehaviour:
@@ -535,7 +535,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A la grande le puse cuca
+  m_Text: Ahora si va a ser una sorpresa el menu principal
 --- !u!222 &1848461746
 CanvasRenderer:
   m_ObjectHideFlags: 0
