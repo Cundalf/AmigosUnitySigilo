@@ -103,6 +103,7 @@ public class CameraController : MonoBehaviour
 
         distance = Mathf.Abs(transform.eulerAngles.y - targetValue);
 
+
         //Si el estado de rotación se activa entra al if
         if (rotationState)
         {
@@ -137,26 +138,29 @@ public class CameraController : MonoBehaviour
          * mas del editor
          * 
          */
-        distanceAngles = Mathf.Abs(cameraYangle - transform.rotation.eulerAngles.y);
-        if (distantCamera && distanceAngles < 0.01f)
+        if (tps.Length != 0)
+        {
+
+            distanceAngles = Mathf.Abs(cameraYangle - transform.rotation.eulerAngles.y);
+            if (distantCamera && distanceAngles < 0.01f)
 
             //Solo se habilita el tp en la camara distante y con la condicion de angulo de camara deseado
-        {
-
-            foreach (GameObject tp in tps) 
             {
-                tp.SetActive(true);
+
+                foreach (GameObject tp in tps)
+                {
+                    tp.SetActive(true);
+                }
             }
-        }
 
-        else
-        {
-            foreach (GameObject tp in tps) 
+            else
             {
-                tp.SetActive(false);
+                foreach (GameObject tp in tps)
+                {
+                    tp.SetActive(false);
+                }
             }
         }
     }
-
 
 }
