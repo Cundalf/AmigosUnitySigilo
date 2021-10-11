@@ -7,6 +7,9 @@ public class MousePosition3D : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private GameObject mousePointer;
+    [SerializeField] private Transform firePointPosition;
+    private GameObject instatiatedObject;
+    private Vector3 FuerzaDisparo;
     private Vector3 positionOnClick;
     public float factor;
 
@@ -22,20 +25,22 @@ public class MousePosition3D : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             positionOnClick = Input.mousePosition;
-        }
-        Ray ray = mainCamera.ScreenPointToRay(positionOnClick);
+            Ray ray = mainCamera.ScreenPointToRay(positionOnClick);
 
             if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask))
             {
                 mousePointer.transform.position = raycastHit.point;
-            var VectorFuerza = calcBallisticVelocityVector(transform.position, targetSalto.position, 85);
-            instatiatedObject
-            playerRB.AddForce(VectorFuerza, ForceMode.Impulse);
+                FuerzaDisparo = calcBallisticVelocityVector(firePointPosition.position, raycastHit.point, 60);
+            }
 
+            instatiatedObject = Instantiate(mousePointer, firePointPosition.position, firePointPosition.rotation);
+            instatiatedObject.GetComponent<Rigidbody>().AddForce(FuerzaDisparo, ForceMode.Impulse);
         }
 
 
+
     }
+
 
 
     Vector3 calcBallisticVelocityVector(Vector3 source, Vector3 target, float angle)
