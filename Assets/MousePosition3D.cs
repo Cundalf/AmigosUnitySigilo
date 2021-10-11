@@ -7,6 +7,7 @@ public class MousePosition3D : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private GameObject mousePointer;
+    [SerializeField] private GameObject ObjetoDisparado;
     [SerializeField] private Transform firePointPosition;
     private GameObject instatiatedObject;
     private Vector3 FuerzaDisparo;
@@ -33,7 +34,7 @@ public class MousePosition3D : MonoBehaviour
                 FuerzaDisparo = calcBallisticVelocityVector(firePointPosition.position, raycastHit.point, 60);
             }
 
-            instatiatedObject = Instantiate(mousePointer, firePointPosition.position, firePointPosition.rotation);
+            instatiatedObject = Instantiate(ObjetoDisparado, firePointPosition.position, firePointPosition.rotation);
             instatiatedObject.GetComponent<Rigidbody>().AddForce(FuerzaDisparo, ForceMode.Impulse);
         }
 

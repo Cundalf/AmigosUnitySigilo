@@ -10243,9 +10243,8 @@ GameObject:
   - component: {fileID: 263029070}
   - component: {fileID: 263029069}
   - component: {fileID: 263029068}
-  - component: {fileID: 263029072}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: MousePointer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10259,7 +10258,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 263029067}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -10283,7 +10282,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3e454f27b30c5ab45a9a9a6da0dd73da, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10322,27 +10321,11 @@ Transform:
   m_GameObject: {fileID: 263029067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.578793, y: 2.2636409, z: -13.973299}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 1, y: 0.01, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &263029072
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 263029067}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1001 &265748407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11929,35 +11912,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: fc36140bd5282304ca8ef66b394ee58e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d82e52cc685005349be7e0e0be1dc5e2, type: 3}
---- !u!1 &368676093 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5982454453405919524, guid: 1d17a55239456d2448620166d50f2a29, type: 3}
-  m_PrefabInstance: {fileID: 126699432}
-  m_PrefabAsset: {fileID: 0}
 --- !u!20 &368676094 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 5982454453405919526, guid: 1d17a55239456d2448620166d50f2a29, type: 3}
   m_PrefabInstance: {fileID: 126699432}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &368676097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 368676093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ada6ab9ba64750546a663f19f747b743, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 368676094}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 8
-  mousePointer: {fileID: 263029067}
-  firePointPosition: {fileID: 726862219}
-  factor: 1
 --- !u!43 &370815809
 Mesh:
   m_ObjectHideFlags: 0
@@ -18785,7 +18744,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 726862218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0216}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0357}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1715021443}
@@ -39566,6 +39525,26 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 653120864697307676, guid: d4a7463d3b056af45af306a86cf9befe, type: 3}
   m_PrefabInstance: {fileID: 639869304}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1715021438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715021437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada6ab9ba64750546a663f19f747b743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 368676094}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  mousePointer: {fileID: 263029067}
+  ObjetoDisparado: {fileID: 8788780772060730973, guid: f569fe69bc8dcb54ea09504d9bc869f0, type: 3}
+  firePointPosition: {fileID: 726862219}
+  factor: 1
 --- !u!4 &1715021443 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 169880438467037350, guid: d4a7463d3b056af45af306a86cf9befe, type: 3}
