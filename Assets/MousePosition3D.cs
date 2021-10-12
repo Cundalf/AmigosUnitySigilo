@@ -56,7 +56,7 @@ public class MousePosition3D : MonoBehaviour
 
         else
         {
-            Debug.Log($"YOU DON'T HAVE A THROWABLE");
+            //Debug.Log($"YOU DON'T HAVE A THROWABLE");
         }
 
 
@@ -99,7 +99,7 @@ public class MousePosition3D : MonoBehaviour
         {
 
             //Si ya tengo item en el inventario no puedo volver a agarrar un item.
-            Debug.Log("Ya tenés un objeto");
+            //Debug.Log("Ya tenés un objeto");
         }
     }
 }

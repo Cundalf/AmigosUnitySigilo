@@ -15,7 +15,7 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log($"Got item state: {gotItem}");
+        //Debug.Log($"Got item state: {gotItem}");
     }
 
 
