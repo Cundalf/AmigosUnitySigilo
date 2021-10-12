@@ -9,6 +9,7 @@ public class DestroyOverTime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         StartCoroutine(waitToDestroy());
     }
 

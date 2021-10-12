@@ -9,6 +9,7 @@ public class MousePosition3D : MonoBehaviour
     [SerializeField] private GameObject mousePointer;
     [SerializeField] private GameObject ObjetoDisparado;
     [SerializeField] private Transform firePointPosition;
+    [SerializeField] public Inventory playerInventory;
     private GameObject instatiatedObject;
     private Vector3 FuerzaDisparo;
     private Vector3 positionOnClick;
@@ -23,8 +24,15 @@ public class MousePosition3D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        //Primero se comprueba que el item esté en el inventario.
+        checkInventory();
+
+        if (Input.GetMouseButtonDown(0) && playerInventory.gotItem)
         {
+            //Se activa cuando toco el click izquiero y además tengo un item en el inventario. Cuando se integre el movimiento por nodos seguramente
+            //tenga que agregar una condición más de tener alguna tecla apretada además del click para lanzar el objeto.
+
+
             positionOnClick = Input.mousePosition;
             Ray ray = mainCamera.ScreenPointToRay(positionOnClick);
 
@@ -34,11 +42,28 @@ public class MousePosition3D : MonoBehaviour
                 FuerzaDisparo = calcBallisticVelocityVector(firePointPosition.position, raycastHit.point, 60);
             }
 
+            //Se instacia el mouse pointer, seguramente esto pueda ser un sprite.
             Instantiate(mousePointer, raycastHit.point, mousePointer.transform.rotation);
+            //Se instacia el objeto disparado en el firepoint 
             instatiatedObject = Instantiate(ObjetoDisparado, firePointPosition.position, firePointPosition.rotation);
+            //Se actualiza el inventario.
+            playerInventory.gotItem = false;
+            //Se activa el objeto ya que su source está desactivado y luego se activa el script de destroy over time.
+            instatiatedObject.SetActive(true);
+            instatiatedObject.GetComponent<DestroyOverTime>().enabled = true;
             instatiatedObject.GetComponent<Rigidbody>().AddForce(FuerzaDisparo, ForceMode.Impulse);
         }
 
+        else
+        {
+            Debug.Log($"YOU DON'T HAVE A THROWABLE");
+        }
+
+
+    }
+
+    private void LateUpdate()
+    {
 
 
     }
@@ -58,5 +83,23 @@ public class MousePosition3D : MonoBehaviour
         // calculate velocity
         float velocity = Mathf.Sqrt(distance * Physics.gravity.magnitude / Mathf.Sin(2 * a));
         return velocity * direction.normalized * factor;
+    }
+
+    private void checkInventory()
+    {
+        //Se comprueba en el inventario que haya algun item
+        if(playerInventory.gotItem)
+        {
+            //Si hay item se hace que el objeto disparado sea este item que está en el inventario. Se activa la gravedad y se hace false el trigger para que se comporte bien con la física.
+            ObjetoDisparado = playerInventory.itemInfo;
+            ObjetoDisparado.GetComponent<Rigidbody>().useGravity = true;
+            ObjetoDisparado.GetComponent<BoxCollider>().isTrigger = false;
+        }
+        else
+        {
+
+            //Si ya tengo item en el inventario no puedo volver a agarrar un item.
+            Debug.Log("Ya tenés un objeto");
+        }
     }
 }
