@@ -5,6 +5,7 @@ using UnityEngine;
 public class DestroyOverTime : MonoBehaviour
 {
     [SerializeField] private GameObject esteObjeto;
+    [SerializeField] private float tiempoParaDestruirse;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,7 @@ public class DestroyOverTime : MonoBehaviour
 
     IEnumerator waitToDestroy()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(tiempoParaDestruirse);
         Destroy(esteObjeto);
     }
 }

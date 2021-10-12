@@ -2085,7 +2085,7 @@ Transform:
   m_Children:
   - {fileID: 1881745036}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &73980614
 BoxCollider:
@@ -8071,7 +8071,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17272
+  m_Name: pb_Mesh16352
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8278,7 +8278,7 @@ PrefabInstance:
       objectReference: {fileID: 148414717}
     - target: {fileID: 5982454454555647960, guid: 1d17a55239456d2448620166d50f2a29, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5982454454555647960, guid: 1d17a55239456d2448620166d50f2a29, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10231,101 +10231,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2135803086563503494, guid: ae7470d9b77a78f48a4db997ce995e12, type: 3}
   m_PrefabInstance: {fileID: 85432252}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &263029067
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 263029071}
-  - component: {fileID: 263029070}
-  - component: {fileID: 263029069}
-  - component: {fileID: 263029068}
-  m_Layer: 0
-  m_Name: MousePointer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!135 &263029068
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 263029067}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &263029069
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 263029067}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 3e454f27b30c5ab45a9a9a6da0dd73da, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &263029070
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 263029067}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &263029071
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 263029067}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.578793, y: 2.2636409, z: -13.973299}
-  m_LocalScale: {x: 1, y: 0.01, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &265748407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11856,7 +11761,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2652691286197149074, guid: d82e52cc685005349be7e0e0be1dc5e2, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2652691286197149074, guid: d82e52cc685005349be7e0e0be1dc5e2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27844,7 +27749,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1090773213
 BoxCollider:
@@ -27984,7 +27889,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1094924629
 MonoBehaviour:
@@ -37719,7 +37624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2095585013608059469, guid: 98d089be3f8fe9a44b11c8624911f599, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2095585013608059469, guid: 98d089be3f8fe9a44b11c8624911f599, type: 3}
       propertyPath: m_LocalPosition.x
@@ -39541,7 +39446,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 8
-  mousePointer: {fileID: 263029067}
+  mousePointer: {fileID: 7626330029650943075, guid: 8dc67ea037538614889c477725d4d799, type: 3}
   ObjetoDisparado: {fileID: 8788780772060730973, guid: f569fe69bc8dcb54ea09504d9bc869f0, type: 3}
   firePointPosition: {fileID: 726862219}
   factor: 1
@@ -42090,7 +41995,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1853184603
 MonoBehaviour:
@@ -47204,7 +47109,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2652691286197149074, guid: d82e52cc685005349be7e0e0be1dc5e2, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2652691286197149074, guid: d82e52cc685005349be7e0e0be1dc5e2, type: 3}
       propertyPath: m_LocalPosition.x

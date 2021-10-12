@@ -30,10 +30,11 @@ public class MousePosition3D : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask))
             {
-                mousePointer.transform.position = raycastHit.point;
+                //mousePointer.transform.position = raycastHit.point;
                 FuerzaDisparo = calcBallisticVelocityVector(firePointPosition.position, raycastHit.point, 60);
             }
 
+            Instantiate(mousePointer, raycastHit.point, mousePointer.transform.rotation);
             instatiatedObject = Instantiate(ObjetoDisparado, firePointPosition.position, firePointPosition.rotation);
             instatiatedObject.GetComponent<Rigidbody>().AddForce(FuerzaDisparo, ForceMode.Impulse);
         }

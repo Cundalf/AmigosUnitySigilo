@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 323525218}
   m_Layer: 0
   m_Name: Camara arrojable
-  m_TagString: Untagged
+  m_TagString: throwable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,3 +239,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   esteObjeto: {fileID: 8788780772060730973}
+  tiempoParaDestruirse: 10
