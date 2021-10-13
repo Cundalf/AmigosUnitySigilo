@@ -91,13 +91,15 @@ public class EnemyStateManager : MonoBehaviour
                 break;
             case EnemyState.Chasing:
                 enemyChasing.enabled = true;
-                if(!fov.canSeePlayer)
-                {
-                    enemyChasing.enabled = false;
-                    //currentEnemyState = EnemyState.Walking;
-                }
-                break;
+                //if(!fov.canSeePlayer)
+                //{
+                //    enemyChasing.enabled = false;
+                //    //currentEnemyState = EnemyState.Walking;
+                //}
+                //break;
 
+                StartCoroutine(WaitingAndWatching());
+                break;
         }
     }
 

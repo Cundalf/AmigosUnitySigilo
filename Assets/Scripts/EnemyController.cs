@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    public FieldOfView fov;
-    public Transform target;
+    private FieldOfView fov;
+    [SerializeField] private Transform target;
     NavMeshAgent agent;
 
 
@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
         fov = GetComponent<FieldOfView>();
         //Con este target el enemigo se moverá a la dirección del player pero nosotros queremos que se mueva al objeto arrojado por esto
         //cambiamos a playerRef en el script de field of view
+        //target = GetComponent<FieldOfView>().playerRef.transform;
         target = GetComponent<FieldOfView>().playerRef.transform;
         agent = GetComponent<NavMeshAgent>();
 
@@ -24,6 +25,9 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        target = GetComponent<FieldOfView>().playerRef.transform;
+
         if (fov.canSeePlayer)
         {
             agent.SetDestination(target.position);
