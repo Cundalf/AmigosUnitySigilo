@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8241345542311520521}
   - component: {fileID: 3522111730001717577}
   - component: {fileID: 3272722180999422341}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 8839120570858275104}
   - component: {fileID: 4266665189957409326}
   - component: {fileID: 3461418791768939145}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Camara
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 8446901725949492913}
   - component: {fileID: 323525218}
   - component: {fileID: 1654724683}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Camara arrojable
   m_TagString: throwable
   m_Icon: {fileID: 0}

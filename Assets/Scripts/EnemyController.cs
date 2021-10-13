@@ -14,6 +14,8 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         fov = GetComponent<FieldOfView>();
+        //Con este target el enemigo se moverá a la dirección del player pero nosotros queremos que se mueva al objeto arrojado por esto
+        //cambiamos a playerRef en el script de field of view
         target = GetComponent<FieldOfView>().playerRef.transform;
         agent = GetComponent<NavMeshAgent>();
 

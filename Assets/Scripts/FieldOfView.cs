@@ -20,7 +20,9 @@ public class FieldOfView : MonoBehaviour
 
     private void Start()
     {
-        playerRef = GameObject.FindGameObjectWithTag("Player");
+        //Cambio a playerRef por una referencia al objeto arrojado.
+        //playerRef = GameObject.FindGameObjectWithTag("Player");
+        playerRef = GameObject.FindGameObjectWithTag("thrown");
         StartCoroutine(FOVRoutine());
     }
 

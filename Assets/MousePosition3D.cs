@@ -52,6 +52,8 @@ public class MousePosition3D : MonoBehaviour
             instatiatedObject.SetActive(true);
             instatiatedObject.GetComponent<DestroyOverTime>().enabled = true;
             instatiatedObject.GetComponent<Rigidbody>().AddForce(FuerzaDisparo, ForceMode.Impulse);
+            instatiatedObject.layer = 6;
+            instatiatedObject.tag = "thrown";
         }
 
         else
