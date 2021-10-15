@@ -15,6 +15,8 @@ public class AgentLinkMover : MonoBehaviour
 {
     public OffMeshLinkMoveMethod m_Method = OffMeshLinkMoveMethod.Parabola;
     public AnimationCurve m_Curve = new AnimationCurve();
+    public float linkSpeed;
+    public bool state = false;
 
     IEnumerator Start()
     {
@@ -52,12 +54,14 @@ public class AgentLinkMover : MonoBehaviour
         OffMeshLinkData data = agent.currentOffMeshLinkData;
         Vector3 startPos = agent.transform.position;
         Vector3 endPos = data.endPos + Vector3.up * agent.baseOffset;
+       
         float normalizedTime = 0.0f;
         while (normalizedTime < 1.0f)
         {
             float yOffset = height * 4.0f * (normalizedTime - normalizedTime * normalizedTime);
             agent.transform.position = Vector3.Lerp(startPos, endPos, normalizedTime) + yOffset * Vector3.up;
-            normalizedTime += Time.deltaTime / duration;
+            
+            normalizedTime += Time.deltaTime * linkSpeed / duration;
             yield return null;
         }
     }
@@ -67,13 +71,19 @@ public class AgentLinkMover : MonoBehaviour
         OffMeshLinkData data = agent.currentOffMeshLinkData;
         Vector3 startPos = agent.transform.position;
         Vector3 endPos = data.endPos + Vector3.up * agent.baseOffset;
+
+        
+        
         float normalizedTime = 0.0f;
         while (normalizedTime < 1.0f)
         {
             float yOffset = m_Curve.Evaluate(normalizedTime);
             agent.transform.position = Vector3.Lerp(startPos, endPos, normalizedTime) + yOffset * Vector3.up;
-            normalizedTime += Time.deltaTime / duration;
+            normalizedTime += Time.deltaTime / duration * linkSpeed;
+            float distance = (startPos - endPos).sqrMagnitude;
+            Debug.Log($"{distance}");
             yield return null;
+            
         }
     }
 }

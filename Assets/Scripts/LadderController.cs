@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 
 	public class LadderController : MonoBehaviour
@@ -16,6 +17,9 @@ using UnityEngine;
 		public float speedUpDown;  //Velocidad ideal alrededor de 30.0
 		public PlayerController tpc; //TU SCRIPT DE MOVIMIENTO.
 		public bool ladderInSight = false;
+		public NavMeshAgent Player;
+		public Rigidbody playerRB;
+		public BoxCollider playerBC;
 
 		void Start()
 		{
@@ -57,6 +61,9 @@ using UnityEngine;
 			// si te encuentras adentro de la hitbox del objeto a escalar los input w y s te moveran hacia arriba y abajo respectivamente. El movimiento lateral no existe.
 			if (inside == true)
 			{
+			
+			playerBC.isTrigger = false;
+			Player.enabled = false;
 			//si presiono la tecla que habilita el climb funcionará solo estando dentro del rango del collider.
 				if(Input.GetKeyDown(KeyCode.B))
 	            {
@@ -65,7 +72,7 @@ using UnityEngine;
 			}
 				if (Input.GetKey("w") && ladderInSight)
 				{
-					chController.transform.position += Vector3.up / speedUpDown;
+					chController.transform.position += Vector3.up / speedUpDown ;
 
 				}
 
