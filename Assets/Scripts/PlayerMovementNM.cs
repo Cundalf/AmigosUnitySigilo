@@ -9,6 +9,8 @@ public class PlayerMovementNM : MonoBehaviour
     [SerializeField]
     private Camera Camera;
     private NavMeshAgent Agent;
+   
+
 
     private RaycastHit[] Hits = new RaycastHit[1];
 
@@ -21,6 +23,7 @@ public class PlayerMovementNM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
@@ -29,5 +32,12 @@ public class PlayerMovementNM : MonoBehaviour
                 Agent.SetDestination(Hits[0].point);
                 }
         }
+
+       
+
+   
     }
+
+
+
 }
