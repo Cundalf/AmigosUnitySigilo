@@ -8711,7 +8711,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16450
+  m_Name: pb_Mesh16458
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9408,7 +9408,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17398
+  m_Name: pb_Mesh17426
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15856,6 +15856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPresent: 0
   startPos: {fileID: 1765230666}
+  thisBoxColl: {fileID: 0}
 --- !u!4 &586122311 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2135803086563503494, guid: ae7470d9b77a78f48a4db997ce995e12, type: 3}
@@ -17082,15 +17083,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 169880438467037350, guid: d4a7463d3b056af45af306a86cf9befe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.16
+      value: 2.41
       objectReference: {fileID: 0}
     - target: {fileID: 169880438467037350, guid: d4a7463d3b056af45af306a86cf9befe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.7990358
+      value: 2.95
       objectReference: {fileID: 0}
     - target: {fileID: 169880438467037350, guid: d4a7463d3b056af45af306a86cf9befe, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.49
+      value: -5.29
       objectReference: {fileID: 0}
     - target: {fileID: 169880438467037350, guid: d4a7463d3b056af45af306a86cf9befe, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18509,7 +18510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8265184076949277927, guid: f569fe69bc8dcb54ea09504d9bc869f0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.51
+      value: 2.06
       objectReference: {fileID: 0}
     - target: {fileID: 8265184076949277927, guid: f569fe69bc8dcb54ea09504d9bc869f0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -19097,7 +19098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8265184076949277927, guid: f569fe69bc8dcb54ea09504d9bc869f0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.324113
+      value: -8.04
       objectReference: {fileID: 0}
     - target: {fileID: 8265184076949277927, guid: f569fe69bc8dcb54ea09504d9bc869f0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -29897,7 +29898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1192494506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29925,13 +29926,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1192494505}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42df2c95315a2fd4bb2de5c7a252800e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 3.81
-  angle: 44
+  angle: 148
   distanceToTarget: 0
   playerRef: {fileID: 837658232}
   targetMask:
@@ -29942,6 +29943,8 @@ MonoBehaviour:
     m_Bits: 128
   directionToTarget: {x: 0, y: 0, z: 0}
   canSeePlayer: 0
+  target: {fileID: 0}
+  enemyStateManager: {fileID: 1192494517}
 --- !u!114 &1192494508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29979,6 +29982,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fov: {fileID: 1192494507}
   target: {fileID: 837658233}
+  itemArrojable: {fileID: 0}
+  targetFromFOV: {fileID: 0}
 --- !u!136 &1192494510
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -30110,6 +30115,7 @@ MonoBehaviour:
   speed: 5
   target: {fileID: 1716012432}
   timeWaitingOnWayPoint: 2
+  primerWaypoint: {fileID: 0}
 --- !u!114 &1192494517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41445,7 +41451,9 @@ MonoBehaviour:
   ObjetoDisparado: {fileID: 8788780772060730973, guid: f569fe69bc8dcb54ea09504d9bc869f0, type: 3}
   firePointPosition: {fileID: 726862219}
   playerInventory: {fileID: 1715021439}
+  playerMovement: {fileID: 1715021446}
   factor: 1
+  canShoot: 0
 --- !u!114 &1715021439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41474,8 +41482,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onLadder: 0
   exitLadder: 0
-  climbSpeed: 4
+  climbSpeed: 8
+  direction: {x: 0, y: 0, z: 0}
   characterController: {fileID: 0}
+  endPoint: 0
 --- !u!4 &1715021443 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 169880438467037350, guid: d4a7463d3b056af45af306a86cf9befe, type: 3}
@@ -41504,6 +41514,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 368676094}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!195 &1715021447
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -48764,6 +48777,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WP1
       objectReference: {fileID: 0}
+    - target: {fileID: 5015262969718406238, guid: 6a35e837882d27547820dac95cc9f643, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4bb6b9cfd99382b49807ddd84818e246, type: 2}
     - target: {fileID: 8465601688405998334, guid: 6a35e837882d27547820dac95cc9f643, type: 3}
       propertyPath: m_RootOrder
       value: 0

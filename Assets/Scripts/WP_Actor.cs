@@ -9,6 +9,7 @@ public class WP_Actor : MonoBehaviour
     public Transform target;
     private NavMeshAgent agent;
     public float timeWaitingOnWayPoint;
+    public Transform primerWaypoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class WP_Actor : MonoBehaviour
         if (other.CompareTag("waypoint"))
         {
             target = other.gameObject.GetComponent<WayPoint>().nextPoint;
+            Debug.Log("Viaje habitual");
             //transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
             StartCoroutine(WaitingAtPosition());
         }
@@ -37,6 +39,13 @@ public class WP_Actor : MonoBehaviour
     IEnumerator WaitingAtPosition()
     {
         yield return new WaitForSeconds(timeWaitingOnWayPoint);
+        agent.SetDestination(target.position);
+    }
+
+    public void ResumeTravel()
+    {
+        Debug.Log("Se resume el viaje");
+        StartCoroutine(WaitingAtPosition());
         agent.SetDestination(target.position);
     }
 }

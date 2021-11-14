@@ -32,31 +32,41 @@ public class Enemy_SM : MonoBehaviour
     private void Update()
     {
 
+    }
 
-        switch (currentEnemyState)
+    public void StateChange(EnemyState newState)
+    {
+
+        if(newState == currentEnemyState)
+        {
+            return;
+        }
+        switch (newState)
         {
 
 
             case EnemyState.Patrolling:
+
                 enemyPatrolling.enabled = true;
                 enemyChasing.enabled = false;
-                if(enemyDetection.canSeePlayer)
-                {
-                    currentEnemyState = EnemyState.Chasing;
-                }
+                enemyPatrolling.ResumeTravel();
+                
+                currentEnemyState = EnemyState.Patrolling;
+           
 
                 break;
             case EnemyState.Chasing:
-                
+
                 enemyChasing.enabled = true;
                 enemyPatrolling.enabled = false;
 
-                if (!enemyDetection.canSeePlayer)
-                {
-                    currentEnemyState = EnemyState.Patrolling;
-                }
+                currentEnemyState = EnemyState.Chasing;
+
+                
                 break;
 
         }
+
+
     }
 }

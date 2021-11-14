@@ -11,9 +11,11 @@ public class MousePosition3D : MonoBehaviour
     [SerializeField] private Transform firePointPosition;
     [SerializeField] public Inventory playerInventory;
     private GameObject instatiatedObject;
+    public PlayerMovementNM playerMovement;
     private Vector3 FuerzaDisparo;
     private Vector3 positionOnClick;
     public float factor;
+    public bool canShoot;
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +28,12 @@ public class MousePosition3D : MonoBehaviour
     {
         //Primero se comprueba que el item esté en el inventario.
         checkInventory();
-
-        if (Input.GetMouseButtonDown(0) && playerInventory.gotItem)
+        if(Input.GetKeyDown(KeyCode.N))
+        {
+            canShoot = true;
+            playerMovement.enabled = false;
+        }
+        if (Input.GetMouseButtonDown(0) && playerInventory.gotItem && canShoot)
         {
             //Se activa cuando toco el click izquiero y además tengo un item en el inventario. Cuando se integre el movimiento por nodos seguramente
             //tenga que agregar una condición más de tener alguna tecla apretada además del click para lanzar el objeto.
@@ -52,6 +58,8 @@ public class MousePosition3D : MonoBehaviour
             instatiatedObject.SetActive(true);
             instatiatedObject.GetComponent<DestroyOverTime>().enabled = true;
             instatiatedObject.GetComponent<Rigidbody>().AddForce(FuerzaDisparo, ForceMode.Impulse);
+            canShoot = false;
+            playerMovement.enabled = true;
         }
 
         else

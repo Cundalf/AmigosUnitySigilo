@@ -9,7 +9,7 @@ public class PlayerMovementNM : MonoBehaviour
     [SerializeField]
     private Camera Camera;
     private NavMeshAgent Agent;
-   
+    public LayerMask layerMask;
 
 
     private RaycastHit[] Hits = new RaycastHit[1];
@@ -27,7 +27,7 @@ public class PlayerMovementNM : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.RaycastNonAlloc(ray, Hits)>0)
+            if (Physics.RaycastNonAlloc(ray, Hits, layerMask)>0)
                 {
                 Agent.SetDestination(Hits[0].point);
                 }
