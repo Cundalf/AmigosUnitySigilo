@@ -6,7 +6,7 @@ using UnityEngine;
 public class FieldOfView : MonoBehaviour
 {
     public float radius;
-    [Range(0,360)]
+    [Range(0, 360)]
     public float angle;
     public float distanceToTarget;
 
@@ -57,14 +57,14 @@ public class FieldOfView : MonoBehaviour
                     canSeePlayer = true;
                     enemyStateManager.StateChange(Enemy_SM.EnemyState.Chasing);
                 }
-                   
+
                 else
                 {
                     canSeePlayer = false;
                     Debug.Log("Se cambia el estado nuevamente a patrolling1");
                     enemyStateManager.StateChange(Enemy_SM.EnemyState.Patrolling);
                 }
-                    
+
             }
             else
             {
@@ -72,7 +72,7 @@ public class FieldOfView : MonoBehaviour
                 Debug.Log("Se cambia el estado nuevamente a patrolling2");
                 enemyStateManager.StateChange(Enemy_SM.EnemyState.Patrolling);
             }
-                
+
         }
         else if (canSeePlayer)
         {
@@ -81,6 +81,42 @@ public class FieldOfView : MonoBehaviour
             Debug.Log("Se cambia el estado nuevamente a patrolling3");
             enemyStateManager.StateChange(Enemy_SM.EnemyState.Patrolling);
         }
-            
+
     }
+
+    public bool CanSeePlayer()
+    {
+        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
+
+        if (rangeChecks.Length != 0)
+        {
+            target = rangeChecks[0].transform;
+            directionToTarget = (target.position - transform.position).normalized;
+
+            if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+            {
+                distanceToTarget = Vector3.Distance(transform.position, target.position);
+
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                {
+                    return true;
+
+                }
+
+                else
+                {
+                    return  false;
+                }
+
+            }
+
+            return false;
+
+
+        }
+        return false;
+    }
+    
 }
+
+
